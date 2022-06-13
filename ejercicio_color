@@ -1,0 +1,98 @@
+function randomColor () { /*elige un sólo color en RGB*/
+    let colorcitoRandom = "rgb("+ Math.floor(Math.random()*255)+", "+ Math.floor(Math.random()*255)+", "+ Math.floor(Math.random()*255)+")";
+    return colorcitoRandom;
+}
+
+
+let arrayColors = [];
+
+function generateRandomColors (number) { /* multiplica la cantidad de rgb's generados*/
+    
+    for (let i = 0; i<number; i++) {
+        arrayColors.push(randomColor());
+    }
+    return arrayColors;
+}
+generateRandomColors (6)
+
+console.log ("y el arreglo generado es... "+arrayColors)
+
+
+const colors = ["rgb(10, 14, 128)","rgb(255, 14, 128)","rgb(200, 14, 128)","rgb(240, 14, 128)","rgb(140, 14, 128)","rgb(40, 14, 128)"];
+
+const $cuadras = document.querySelectorAll(".square"); /*selecciono todos, los seis, cuadrantes */
+const $mensajito = document.querySelector("#mensajito")
+const $h1 = document.querySelector("h1");
+/*let color = "#ffffff";*/
+
+
+for (i=0;i<$cuadras.length;i++){
+    $cuadras[i].style.backgroundColor = arrayColors[i];
+    $cuadras[i].addEventListener("click", function(){
+        const clickedColor = this.style.backgroundColor;
+        if (clickedColor !== pickedColor) {
+            this.style.backgroundColor = "#232323";
+            $mensajito.textContent = "fallaste, sigue intentando";
+            
+
+        }else{
+            $mensajito.textContent = "that's correct buddy";
+            $h1.style.color = pickedColor;
+            changeColors ();
+            $botonNuevosColores.textContent = "jugar otra vez?"
+        }
+    }) 
+
+} /*cierra el for */
+
+
+
+function changeColors () { /*cambia el color de los seis cuadrantes*/
+    $cuadras.forEach(function(colorcito){
+        colorcito.style.backgroundColor = pickedColor
+    })
+}
+
+
+
+function pickColor () { /*elige un color del array colors*/
+    let azar = Math.floor(Math.random()*arrayColors.length);
+    return arrayColors[azar];
+    
+};
+
+
+
+    
+   
+let pickedColor = pickColor ()
+let $spanColor = document.getElementById("colorDisplay");
+$spanColor.textContent = pickedColor;
+
+console.log ("Hay que adivinar..."+pickedColor)
+
+const $botonNuevosColores = document.querySelector("#reset");
+
+
+
+
+$botonNuevosColores.addEventListener("click", function () {
+   
+    for (i=0; i<$cuadras.length;i++) { /*vaciar arreglo*/
+        arrayColors.pop(arrayColors[i])
+    }
+    generateRandomColors (6)
+    for (i=0;i<$cuadras.length;i++){ /*rellenar arreglo*/
+        $cuadras[i].style.backgroundColor = arrayColors[i];}
+
+    $h1.style.color= "#ffffff"
+    console.log("y ahora el arreglo es... "+arrayColors)
+    
+
+    pickedColor = pickColor ()
+    $spanColor.textContent = pickedColor;
+    console.log("hay q adivinar... "+pickedColor)
+
+   
+    
+}) /*fin botón*/
