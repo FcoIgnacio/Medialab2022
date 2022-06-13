@@ -1,0 +1,24 @@
+//Ejercicio_ 01 
+//("ab" !== "ac") && (9 < 22)
+
+    
+//Ejercicio_ 02
+//let num_usuario = prompt("Ingresá un número");
+//if((parseInt(num_usuario)%2) == 0) {alert("trueverda");} else {alert("falsefal");}
+
+
+//Ejercicio_ 02_parte_01
+
+//const edad_jub = 60
+//let edad_fem = prompt("Que edad tenés?");
+
+//if(parseInt(edad_fem) >= edad_jub) {alert("Ya podés jubilarte");} else {alert("Seguí trabajando");}
+
+//Ejercicio_ 02_parte_02
+
+let genre = prompt("A cuál género pertenecés?");
+let edad_m= prompt("cuál es tu edad");
+
+if (genre == "mujer" || genre == "Mujer" || genre == "MUJER" && edad_m >= 60) || (genre == "hombre" || genre == "Hombre" || genre == "HOMBRE" && edad_h >= 65)
+{alert ("Felicitaciones, ya podés jubilar");} else {alert("segí laburando");}
+  
